@@ -1,3 +1,6 @@
+# Script to turn on a Yeelight based on pollution data
+# Uses YeeCli https://gitlab.com/stavros/yeecli/
+
 import requests
 import json
 import os
