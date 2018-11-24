@@ -1,15 +1,13 @@
 import requests
 import json
-import subprocess
+import os
 
 def change_colour (hue, saturation):
-	cmd = """curl -X PUT --header "Content-Type:Application/json" --header "authorization: 092-94-999" http://192.168.31.95:51826/characteristics --data '
-{"characteristics":[{"aid":38,"iid":12,"value":""" + str(hue) + """},{"aid":38,"iid":13,"value":""" + str(saturation) + """ }]}'"""
-	process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
-
+	cmd = 'yee --ip=192.168.31.55 hsv ' + str(hue) + ' ' + str(saturation) 
+	os.system (cmd)
 def turn_on_light ():
-	cmd = """curl -X PUT --header "Content-Type:Application/json" --header "authorization: 092-94-999" http://192.168.31.95:51826/characteristics --data '{"characteristics":[{"aid":38,"iid":10,"value":true,"status":0}]}'"""
-	process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)	
+	cmd = 'yee --ip=192.168.31.55 brightness 10'
+	os.system('yee --ip=192.168.31.55 brightness 10')
 
 api_token = '8a26809e31dc3953bacdff5795091a22f52960dd'
 request = "http://api.waqi.info/search/?keyword=beijing&token=" + api_token
